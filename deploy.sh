@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ $ENVIRONMENT = "QA" ]; then
+if [ $ENVIRONMENT = "PROD" ]; then
    echo Deploying to "$ENVIRONMENT" Environment ....
-   sshpass -p "gamut" scp gamutkart.war gamut@172.17.0.2:/home/gamut/apache-tomcat-8.5.11/webapps
-elif [ $ENVIRONMENT = "PROD" ]; then
+   sshpass -p "prod_tomcat" scp target/myHelloWorld.war tomcat1:/packages/apache-tomcat-9.0.16/webapps
+elif [ $ENVIRONMENT = "DEV" ]; then
    echo Deploying to "$ENVIRONMENT" Environment....
-   sshpass -p "gamut" scp gamutkart.war gamut@172.17.0.3:/home/gamut/apache-tomcat-8.5.11/webapps
+   sshpass -p "dev_tomcat" scp target/myHelloWorld.war tomcat2:/packages/apache-tomcat-9.0.16/webapps
 fi

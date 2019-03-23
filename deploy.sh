@@ -1,7 +1,9 @@
 #!/bin/bash
-if [ $1 = "PROD" ]
-then
-sshpass -p $prod_passwd scp /target/HelloWorld.war tomcat1:/packages/apache-tomcat-9.0.16/webapps
-else [ $1 = "DEV" ]
-sshpass -p $dev_passwd scp /target/HelloWorld.war tomcat2:/packages/apache-tomcat-9.0.16/webapps
+
+if [ $ENVIRONMENT = "QA" ]; then
+   echo Deploying to "$ENVIRONMENT" Environment ....
+   sshpass -p "gamut" scp gamutkart.war gamut@172.17.0.2:/home/gamut/apache-tomcat-8.5.11/webapps
+elif [ $ENVIRONMENT = "PROD" ]; then
+   echo Deploying to "$ENVIRONMENT" Environment....
+   sshpass -p "gamut" scp gamutkart.war gamut@172.17.0.3:/home/gamut/apache-tomcat-8.5.11/webapps
 fi

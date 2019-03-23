@@ -20,6 +20,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>HelloWorld</finalName>
+    <finalName>myHelloWorld</finalName>
   </build>
 </project>
